@@ -1,7 +1,7 @@
-from banking_pkg import account # import module
+from banking_pkg import account  # import module
 
 
-def atm_menu(name): # display menu
+def atm_menu(name):  # display menu
     print("")
     print("          === Automated Teller Machine ===          ")
     print("User: " + name)
@@ -15,8 +15,22 @@ def atm_menu(name): # display menu
 
 print("          === Automated Teller Machine ===          ")  # table header
 
-name = input("Enter name to register: ")  # get name
-pin = input("Enter PIN: ")  # get pin
+while True:  # loop to make sure name entered is between 1 and 10 characters long
+    name = input("Enter name to register: \n")  # get name
+    length = len(name)  # get length of name entered
+    if length <= 10 and length >= 1:  # if length is between 1 and 10
+        break  # exit loop and move to getting pin
+    else:  # let user know why the name entered was not valid
+        print("Name must be between 1 and 10 characters long\n")
+
+while True:  # loop to make sure pin entered is 4 digits long
+    pin = input("Enter a 4 digit PIN: \n")  # get pin
+    length = len(pin)  # get length
+    if length == 4:  # make sure it is 4 digits
+        break  # exit loop after validation
+    else:  # if the pin is not 4 digits long
+        # let user know why validation failed
+        print("You must enter a 4 digit pin \n")
 balance = 0  # set balance to 0
 
 print("%s has been registered witha a starting balance of $%d" % (name, balance))
@@ -36,13 +50,18 @@ while True:
     atm_menu(name)  # display menu
     option = input("Choose an option: ")  # user input to select an option
     if option == '1':
-        account.show_balance(balance)  # module account function call to display balance
+        # module account function call to display balance
+        account.show_balance(balance)
     elif option == '2':
-        balance = account.deposit(balance)  # module account function call to update balance after deposit
-        account.show_balance(balance)  # module account function call to update to display balance after deposit
+        # module account function call to update balance after deposit
+        balance = account.deposit(balance)
+        # module account function call to update to display balance after deposit
+        account.show_balance(balance)
     elif option == '3':
-        balance = account.withdraw(balance)  # module account function call to update balance after withdraw
-        account.show_balance(balance)  # module account function call to display balance after withdraw
+        # module account function call to update balance after withdraw
+        balance = account.withdraw(balance)
+        # module account function call to display balance after withdraw
+        account.show_balance(balance)
     else:
-        account.logout(name)  #module account function call to logout
+        account.logout(name)  # module account function call to logout
         break  # exit loop
