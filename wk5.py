@@ -14,15 +14,15 @@ def guess_random_number(tries: int, start: int, stop: int):
         repeat = True
 
         #! bonus task 3
-        while repeat is True:
+        while repeat is True:  # if there are repeats, keep looping through until user enters a new number
             guess = pyip.inputInt(prompt='Guess a number between %d and %d : ' %  # ! bonus task 1
                                   (start, stop), min=start, lessThan=stop)  # get user's guess
-            if guess in guesses:
+            if guess in guesses:  # if user entered a repeat
                 repeat = True
                 print('Already tried that one. Guess a new number')
-            else:
-                repeat = False
-                guesses.append(guess)
+            else:  # if user entered a new number
+                repeat = False  # to exit loop
+                guesses.append(guess)  # append to guesses
 
         if random_num > guess:  # if number guessed is lower than the random number
             print('Guess higher! ')
