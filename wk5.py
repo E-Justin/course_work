@@ -5,11 +5,25 @@ import pyinputplus as pyip
 def guess_random_number(tries: int, start: int, stop: int):
     # get a random int between the start and stop arguments
     random_num = random.randint(start, stop)
+    guesses = []
+    guess = int
+
     while tries != 0:  # while you have not ran out of attempts
         print('Tries remaining : %d' % tries)
-        #! bonus task 1
-        guess = pyip.inputInt(prompt='Guess a number between %d and %d : ' %
-                              (start, stop), min=start, lessThan=stop)  # get user's guess
+
+        repeat = True
+
+        #! bonus task 3
+        while repeat is True:
+            guess = pyip.inputInt(prompt='Guess a number between %d and %d : ' %  # ! bonus task 1
+                                  (start, stop), min=start, lessThan=stop)  # get user's guess
+            if guess in guesses:
+                repeat = True
+                print('Already tried that one. Guess a new number')
+            else:
+                repeat = False
+                guesses.append(guess)
+
         if random_num > guess:  # if number guessed is lower than the random number
             print('Guess higher! ')
         elif random_num < guess:  # if number guessed is higher than random number
@@ -21,7 +35,7 @@ def guess_random_number(tries: int, start: int, stop: int):
     print('You failed. The number was %d :( ' % random_num)
 
 
-# guess_random_number(5, 0, 10)
+guess_random_number(5, 0, 10)
 
 
 def guess_random_num_linear(tries: int, start: int, stop: int):
@@ -70,22 +84,22 @@ def guess_random_num_binary(tries: int, start: int, stop: int):
 
 #! bonus task 2
 def choose_your_search_type():
-    tries = pyip.inputInt('Enter the number of attempts: ')  # get user input as int
-    start = pyip.inputInt('Enter the minimum number in a range to guess from ')  # get user input as int
-    stop = pyip.inputInt('Enter the maximum number in a range to guess from ')  # get user input as int
+    tries = pyip.inputInt('Enter the number of attempts: ')
+    start = pyip.inputInt('Enter the minimum number in a range to guess from ')
+    stop = pyip.inputInt('Enter the maximum number in a range to guess from ')
 
     print('How would you like to guess a random number? ')
     print('1) ... You guess. ')
     print('2) ... linear search ')
     print('3) ... binary search ')
     selection = pyip.inputInt(
-        prompt='Choose from the menu ... ', min=1, max=3)  # get user input (int btwn 1 and 3)
+        prompt='Choose from the menu ... ', min=1, max=3)
 
-    if selection == 1:  # you guess
+    if selection == 1:
         guess_random_number(tries, start, stop)
-    elif selection == 2:  # linear search
+    elif selection == 2:
         guess_random_num_linear(tries, start, stop)
-    else:  # binary search
+    else:
         guess_random_num_linear(tries, start, stop)
 
 
