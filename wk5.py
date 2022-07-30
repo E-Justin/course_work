@@ -70,22 +70,22 @@ def guess_random_num_binary(tries: int, start: int, stop: int):
 
 #! bonus task 2
 def choose_your_search_type():
-    tries = pyip.inputInt('Enter the number of attempts: ')
-    start = pyip.inputInt('Enter the minimum number in a range to guess from ')
-    stop = pyip.inputInt('Enter the maximum number in a range to guess from ')
+    tries = pyip.inputInt('Enter the number of attempts: ')  # get user input as int
+    start = pyip.inputInt('Enter the minimum number in a range to guess from ')  # get user input as int
+    stop = pyip.inputInt('Enter the maximum number in a range to guess from ')  # get user input as int
 
     print('How would you like to guess a random number? ')
     print('1) ... You guess. ')
     print('2) ... linear search ')
     print('3) ... binary search ')
     selection = pyip.inputInt(
-        prompt='Choose from the menu ... ', min=1, max=3)
+        prompt='Choose from the menu ... ', min=1, max=3)  # get user input (int btwn 1 and 3)
 
-    if selection == 1:
+    if selection == 1:  # you guess
         guess_random_number(tries, start, stop)
-    elif selection == 2:
+    elif selection == 2:  # linear search
         guess_random_num_linear(tries, start, stop)
-    else:
+    else:  # binary search
         guess_random_num_linear(tries, start, stop)
 
 
