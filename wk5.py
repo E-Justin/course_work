@@ -4,7 +4,7 @@ import pyinputplus as pyip
 
 def guess_random_number(tries: int, start: int, stop: int):
     # get a random int between the start and stop arguments
-    random_num = random.randint(start, stop + 1)
+    random_num = random.randint(start, stop)
     while tries != 0:  # while you have not ran out of attempts
         print('Tries remaining : %d' % tries)
         #! bonus task 1
@@ -26,7 +26,7 @@ def guess_random_number(tries: int, start: int, stop: int):
 
 def guess_random_num_linear(tries: int, start: int, stop: int):
     # get random number between the values entered as arguments
-    random_num = random.randint(start, stop + 1)
+    random_num = random.randint(start, stop)
     print('The number for the program to guess is %d' %
           random_num)  # display randomly generated number
     for i in range(start, stop):  # iterate from teh start all the way to the stop number
@@ -47,7 +47,7 @@ def guess_random_num_linear(tries: int, start: int, stop: int):
 
 def guess_random_num_binary(tries: int, start: int, stop: int):
     # get random number between start and stop arguments
-    random_num = random.randint(start, stop + 1)
+    random_num = random.randint(start, stop)
     print('Random number to find : %d ' % random_num)
     while start <= stop and tries != 0:  # while there are attempts left and start is less than or equal to stop
         pivot = (start + stop) // 2  # get middle num
