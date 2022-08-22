@@ -286,11 +286,17 @@ ORDER BY s.state_name
 -- 
 -- Below the JOIN statement, write a WHERE statement to create a subquery.
 -- Find WHERE the territory_id in the territories table is NOT IN the result set
--- from a subquery that selects the territory_id from the employee_territories table. 
+-- from a subquery that selects the territory_id from the employees_territories table. 
 
 -- Finally, take the final result set and order by territory_id.
 
-
+SELECT territory_description, r.region_description
+FROM territories t
+JOIN regions r
+ON t.region_id = r.region_id
+WHERE t.territory_id NOT IN (
+SELECT et.territory_id FROM employees_territories et)
+ORDER BY territory_id;
 
 -- 3.5
 -- Management needs a list of all suppliers' and customers' contact information 
